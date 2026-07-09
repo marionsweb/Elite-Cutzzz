@@ -10,6 +10,8 @@ import img5 from "@assets/IMG-20260626-WA0014_1783583570615.jpg";
 import img6 from "@assets/IMG-20260626-WA0021_1783583570696.jpg";
 import vid1 from "@assets/VID-20260626-WA0031_1783583570438.mp4";
 import vid2 from "@assets/VID-20260626-WA0032_1783583570656.mp4";
+import vid3 from "@assets/e32d45ea587f8311903008a0319a1444_1783584754013.mp4";
+import vid4 from "@assets/35f9cdc32796d7fc04d2fbef2a16639d_1783585117774.mp4";
 
 type GalleryItem =
   | { type: "image"; src: string; alt: string }
@@ -22,8 +24,10 @@ const galleryItems: GalleryItem[] = [
   { type: "image", src: img3, alt: "Blonde fade colour treatment — SD Cutz" },
   { type: "video", src: vid2, label: "SD Cutz work reel" },
   { type: "image", src: img4, alt: "Afro skin fade — SD Cutz" },
+  { type: "video", src: vid3, label: "SD Cutz barber session" },
   { type: "image", src: img5, alt: "Clean cut in the SD Cutz chair — SD Cutz" },
   { type: "image", src: img6, alt: "Premium cut finish — SD Cutz" },
+  { type: "video", src: vid4, label: "SD Cutz transformation" },
 ];
 
 export function Gallery() {
