@@ -8,14 +8,22 @@ import img3 from "@assets/IMG-20260626-WA0017_1783583570534.jpg";
 import img4 from "@assets/IMG-20260626-WA0020_1783583570571.jpg";
 import img5 from "@assets/IMG-20260626-WA0014_1783583570615.jpg";
 import img6 from "@assets/IMG-20260626-WA0021_1783583570696.jpg";
+import vid1 from "@assets/VID-20260626-WA0031_1783583570438.mp4";
+import vid2 from "@assets/VID-20260626-WA0032_1783583570656.mp4";
 
-const galleryImages = [
-  { src: img1, alt: "Fresh fade with eyebrow design — SD Cutz" },
-  { src: img2, alt: "Kids specialty cut with design — SD Cutz" },
-  { src: img3, alt: "Blonde fade colour treatment — SD Cutz" },
-  { src: img4, alt: "Afro skin fade — SD Cutz" },
-  { src: img5, alt: "Clean cut in the SD Cutz chair — SD Cutz" },
-  { src: img6, alt: "Premium cut finish — SD Cutz" },
+type GalleryItem =
+  | { type: "image"; src: string; alt: string }
+  | { type: "video"; src: string; label: string };
+
+const galleryItems: GalleryItem[] = [
+  { type: "image", src: img1, alt: "Fresh fade with eyebrow design — SD Cutz" },
+  { type: "video", src: vid1, label: "SD Cutz in action" },
+  { type: "image", src: img2, alt: "Kids specialty cut with design — SD Cutz" },
+  { type: "image", src: img3, alt: "Blonde fade colour treatment — SD Cutz" },
+  { type: "video", src: vid2, label: "SD Cutz work reel" },
+  { type: "image", src: img4, alt: "Afro skin fade — SD Cutz" },
+  { type: "image", src: img5, alt: "Clean cut in the SD Cutz chair — SD Cutz" },
+  { type: "image", src: img6, alt: "Premium cut finish — SD Cutz" },
 ];
 
 export function Gallery() {
@@ -64,19 +72,31 @@ export function Gallery() {
           animate={inView ? "visible" : "hidden"}
           className="columns-2 md:columns-3 gap-3 space-y-3 mb-16 max-w-6xl mx-auto"
         >
-          {galleryImages.map((image, index) => (
+          {galleryItems.map((item, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
               className="relative overflow-hidden rounded-md group break-inside-avoid block"
             >
               <div className="relative overflow-hidden">
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105 block"
-                  loading="lazy"
-                />
+                {item.type === "video" ? (
+                  <video
+                    src={item.src}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    aria-label={item.label}
+                    className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105 block"
+                  />
+                ) : (
+                  <img
+                    src={item.src}
+                    alt={item.alt}
+                    className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105 block"
+                    loading="lazy"
+                  />
+                )}
                 {/* Gold hover overlay */}
                 <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-300 pointer-events-none" />
                 {/* Subtle dark gradient at bottom for depth */}
