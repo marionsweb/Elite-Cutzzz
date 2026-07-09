@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "SD Cutz — Premium Barbershop"
+version = "1.0.0"
+id = "artifacts/sd-cutz"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25501
+
+[services.development]
+run = "pnpm --filter @workspace/sd-cutz run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/sd-cutz", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/sd-cutz/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25501"
+BASE_PATH = "/"
