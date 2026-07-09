@@ -80,7 +80,7 @@ export function Contact() {
                 </div>
                 <div>
                   <h4 className="text-white font-medium text-lg mb-1">TikTok</h4>
-                  <a href="https://www.tiktok.com/@sdcutz" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                  <a href="https://www.tiktok.com/@sdcut01" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                     @SD Cutz
                   </a>
                 </div>

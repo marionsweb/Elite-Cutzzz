@@ -113,13 +113,13 @@ export function Gallery() {
           className="text-center"
         >
           <a
-            href="https://www.tiktok.com/@sdcutz"
+            href="https://www.tiktok.com/@sdcut01"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-3 bg-black border border-primary text-primary font-medium py-4 px-8 rounded hover:bg-primary hover:text-black transition-colors text-lg group"
           >
             <FaTiktok size={24} className="group-hover:scale-110 transition-transform" />
-            Follow us on TikTok @SD Cutz
+            Follow us on TikTok @sdcut01
           </a>
         </motion.div>
       </div>
