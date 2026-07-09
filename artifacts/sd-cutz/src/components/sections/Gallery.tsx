@@ -2,6 +2,22 @@ import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { FaTiktok } from "react-icons/fa";
 
+import img1 from "@assets/IMG-20260626-WA0024_1783583570503.jpg";
+import img2 from "@assets/IMG-20260626-WA0025_1783583570476.jpg";
+import img3 from "@assets/IMG-20260626-WA0017_1783583570534.jpg";
+import img4 from "@assets/IMG-20260626-WA0020_1783583570571.jpg";
+import img5 from "@assets/IMG-20260626-WA0014_1783583570615.jpg";
+import img6 from "@assets/IMG-20260626-WA0021_1783583570696.jpg";
+
+const galleryImages = [
+  { src: img1, alt: "Fresh fade with eyebrow design — SD Cutz" },
+  { src: img2, alt: "Kids specialty cut with design — SD Cutz" },
+  { src: img3, alt: "Blonde fade colour treatment — SD Cutz" },
+  { src: img4, alt: "Afro skin fade — SD Cutz" },
+  { src: img5, alt: "Clean cut in the SD Cutz chair — SD Cutz" },
+  { src: img6, alt: "Premium cut finish — SD Cutz" },
+];
+
 export function Gallery() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, amount: 0.1 });
@@ -23,23 +39,6 @@ export function Gallery() {
     },
   };
 
-  // Generate 9 placeholders with varying background gradients to simulate a masonry feel
-  const galleryItems = Array.from({ length: 9 }).map((_, i) => {
-    const gradients = [
-      "linear-gradient(135deg, #111111 0%, #0a0a0a 100%)",
-      "linear-gradient(135deg, #1a1a1a 0%, #111111 100%)",
-      "linear-gradient(135deg, #222222 0%, #1a1a1a 100%)",
-    ];
-    // Slightly randomize aspect ratio with padding bottom
-    const aspects = ["pb-[100%]", "pb-[125%]", "pb-[80%]"];
-    
-    return {
-      id: i,
-      bg: gradients[i % 3],
-      aspect: aspects[i % 3]
-    };
-  });
-
   return (
     <section id="gallery" className="py-24 px-4 bg-[#080808] relative z-10">
       <div className="max-w-7xl mx-auto">
@@ -50,7 +49,7 @@ export function Gallery() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <div className="w-24 h-px bg-primary mx-auto mb-6"></div>
+          <div className="w-24 h-px bg-primary mx-auto mb-6" />
           <h2 className="font-serif text-4xl md:text-5xl text-primary font-bold mb-4">
             Our Work
           </h2>
@@ -65,36 +64,23 @@ export function Gallery() {
           animate={inView ? "visible" : "hidden"}
           className="columns-2 md:columns-3 gap-3 space-y-3 mb-16 max-w-6xl mx-auto"
         >
-          {galleryItems.map((item) => (
+          {galleryImages.map((image, index) => (
             <motion.div
-              key={item.id}
+              key={index}
               variants={itemVariants}
               className="relative overflow-hidden rounded-md group break-inside-avoid block"
             >
-              <div
-                className={`w-full ${item.aspect} relative flex items-center justify-center transition-transform duration-500 group-hover:scale-105`}
-                style={{ background: item.bg }}
-              >
-                <div className="absolute inset-0 flex items-center justify-center opacity-40 group-hover:opacity-100 transition-opacity duration-300">
-                  <svg
-                    width="48"
-                    height="48"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="text-primary opacity-60"
-                  >
-                    <circle cx="6" cy="6" r="3" />
-                    <circle cx="6" cy="18" r="3" />
-                    <line x1="20" y1="4" x2="8.12" y2="15.88" />
-                    <line x1="14.47" y1="14.48" x2="20" y2="20" />
-                    <line x1="8.12" y1="8.12" x2="12" y2="12" />
-                  </svg>
-                </div>
-                <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-300"></div>
+              <div className="relative overflow-hidden">
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105 block"
+                  loading="lazy"
+                />
+                {/* Gold hover overlay */}
+                <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-300 pointer-events-none" />
+                {/* Subtle dark gradient at bottom for depth */}
+                <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
               </div>
             </motion.div>
           ))}
