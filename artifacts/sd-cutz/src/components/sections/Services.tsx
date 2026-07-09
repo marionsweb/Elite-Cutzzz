@@ -2,12 +2,11 @@ import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
 const services = [
-  { name: "Fresh Cut (Basic)", price: "₦1,500" },
-  { name: "Shape Up / Line Up", price: "₦1,500" },
+  { name: "Fresh Normal Hair Cut", price: "₦1,500" },
+  { name: "Shaving / Carving", price: "₦1,000" },
   { name: "Full Cut + Beard Trim", price: "₦2,000" },
-  { name: "Skin Fade", price: "₦2,000" },
-  { name: "Premium Fade + Design", price: "₦2,500" },
-  { name: "Full Groom Package", price: "₦3,000" },
+  { name: "Hair Cut with Full Black Hair Dye", price: "₦4,000" },
+  { name: "Hair Cut with Other Special Packages", price: "₦5,000+" },
 ];
 
 export function Services() {
